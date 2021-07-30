@@ -1,7 +1,8 @@
 # TODO list
 * [F] withdrawal bundles of only 5€ notes 
+  - add a `Bundle#value` method
   - withdrawal should raise an exception when cannot be performed
-  - a `Bundle` object should be created instead of a poor hashmap? (and it should have a `value` method too?)
+  - withdrawal should not leave negative note quantities
 * [F] withdrawal bundles of other denominations too (10, 20, 50)
 * [F] gives priority to the higher value denominations first before using the smaller denominations
 * [F] it should be disallowed to load negative quantities of banknotes
