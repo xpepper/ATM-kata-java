@@ -14,6 +14,12 @@ public class Withdrawal {
     }
 
     public int value() {
-        return banknotesAmountFor(Denomination.FIVE_EURO) * 5;
+        return bundle.keySet().stream()
+                .mapToInt(denomination -> valueFor(denomination))
+                .sum();
+    }
+
+    private int valueFor(Denomination denomination) {
+        return banknotesAmountFor(denomination) * denomination.value;
     }
 }
