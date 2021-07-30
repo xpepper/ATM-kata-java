@@ -47,12 +47,12 @@ public class AutomatedTellerMachineTest {
     }
 
     @Test
-    void offer_cash_withdrawal() {
+    void offer_cash_withdrawal_with_a_bundle_of_just_five_euros() {
         atm.loadBills(Denomination.FIVE_EURO, 2);
 
         Map<Denomination, Integer> bundle = atm.withdraw(10);
 
         assertThat(bundle.get(Denomination.FIVE_EURO)).isEqualTo(2);
-//        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
+        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
     }
 }
