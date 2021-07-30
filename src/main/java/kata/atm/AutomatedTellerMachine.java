@@ -6,7 +6,7 @@ public class AutomatedTellerMachine {
     private final HashMap<Denomination, Integer> bills = new HashMap<>();
 
     public void loadBills(Denomination denomination, int quantity) {
-        bills.put(denomination, quantity);
+        bills.put(denomination, billsFor(denomination) + quantity);
     }
 
     public int billsFor(Denomination denomination) {

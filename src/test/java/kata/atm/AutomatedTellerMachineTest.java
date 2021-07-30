@@ -35,4 +35,12 @@ public class AutomatedTellerMachineTest {
         assertThat(atm.billsFor(Denomination.FIFTY_EURO)).isEqualTo(1);
     }
 
+    @Test
+    void load_bills_keeping_track_of_the_already_existing_bills() {
+        atm.loadBills(Denomination.FIVE_EURO, 1);
+        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1);
+
+        atm.loadBills(Denomination.FIVE_EURO, 2);
+        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1+2);
+    }
 }
