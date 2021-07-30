@@ -1,5 +1,6 @@
 # TODO list
 
+* [F] it should be disallowed to load negative quantities of banknotes
 * [!] `Denomination` is a simple `enum`... is it enough?
 * [!] smell: the denomination value (e.g. FIVE_EURO has a value of 5) is still not relevant in the system
 * [R] tests should be refactored to iterate over all the available `Denomination`s?
