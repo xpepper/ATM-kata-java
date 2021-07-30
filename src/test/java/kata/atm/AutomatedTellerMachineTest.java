@@ -52,6 +52,7 @@ public class AutomatedTellerMachineTest {
         Withdrawal withdrawal = atm.withdraw(10);
 
         assertThat(withdrawal.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
+        assertThat(withdrawal.value()).isEqualTo(10);
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
     }
 }

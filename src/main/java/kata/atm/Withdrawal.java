@@ -12,4 +12,8 @@ public class Withdrawal {
     public void add(Denomination denomination, int quantity) {
         bundle.put(denomination, quantity);
     }
+
+    public int value() {
+        return banknotesAmountFor(Denomination.FIVE_EURO) * 5;
+    }
 }
