@@ -15,18 +15,6 @@ public class AutomatedTellerMachineTest {
     }
 
     @Test
-    void initially_has_no_5_euro_banknotes() {
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
-    }
-
-    @Test
-    void has_one_5_euro_banknote_after_loading_it() {
-        atm.loadBills(Denomination.FIVE_EURO, 1);
-
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1);
-    }
-
-    @Test
     void initially_has_no_banknotes() {
         assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
         assertThat(atm.billsFor(Denomination.TEN_EURO)).isEqualTo(0);
