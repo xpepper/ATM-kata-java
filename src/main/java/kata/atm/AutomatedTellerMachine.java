@@ -15,13 +15,13 @@ public class AutomatedTellerMachine {
         return bills.getOrDefault(denomination, 0);
     }
 
-    public Bundle withdraw(int amount) {
-        Bundle bundle = new Bundle();
+    public Withdrawal withdraw(int amount) {
+        Withdrawal withdrawal = new Withdrawal();
         if (billsFor(FIVE_EURO) > 0) {
             int notesQuantity = amount / FIVE_EURO.value;
             loadBills(FIVE_EURO, -notesQuantity);
-            bundle.add(FIVE_EURO, notesQuantity);
+            withdrawal.add(FIVE_EURO, notesQuantity);
         }
-        return bundle;
+        return withdrawal;
     }
 }

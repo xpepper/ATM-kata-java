@@ -1,6 +1,5 @@
 # TODO list
 * [F] withdrawal bundles of only 5€ notes 
-  - add a `Bundle#value` method
   - withdrawal should raise an exception when cannot be performed
   - withdrawal should not leave negative note quantities
 * [F] withdrawal bundles of other denominations too (10, 20, 50)

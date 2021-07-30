@@ -3,8 +3,6 @@ package kata.atm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 import static kata.atm.Denomination.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -51,9 +49,9 @@ public class AutomatedTellerMachineTest {
     void offer_cash_withdrawal_with_a_bundle_of_just_five_euros() {
         atm.loadBills(FIVE_EURO, 2);
 
-        Bundle bundle = atm.withdraw(10);
+        Withdrawal withdrawal = atm.withdraw(10);
 
-        assertThat(bundle.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
+        assertThat(withdrawal.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
     }
 }

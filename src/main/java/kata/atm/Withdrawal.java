@@ -2,7 +2,7 @@ package kata.atm;
 
 import java.util.HashMap;
 
-public class Bundle {
+public class Withdrawal {
     HashMap<Denomination, Integer> bundle = new HashMap<>();
 
     public Integer banknotesAmountFor(Denomination denomination) {
