@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static kata.atm.Denomination.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class AutomatedTellerMachineTest {
@@ -18,41 +19,41 @@ public class AutomatedTellerMachineTest {
 
     @Test
     void initially_has_no_banknotes() {
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
-        assertThat(atm.billsFor(Denomination.TEN_EURO)).isEqualTo(0);
-        assertThat(atm.billsFor(Denomination.TWENTY_EURO)).isEqualTo(0);
-        assertThat(atm.billsFor(Denomination.FIFTY_EURO)).isEqualTo(0);
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
+        assertThat(atm.billsFor(TEN_EURO)).isEqualTo(0);
+        assertThat(atm.billsFor(TWENTY_EURO)).isEqualTo(0);
+        assertThat(atm.billsFor(FIFTY_EURO)).isEqualTo(0);
     }
 
     @Test
     void has_one_banknote_for_each_denomination_after_loading_it() {
-        atm.loadBills(Denomination.FIVE_EURO, 1);
-        atm.loadBills(Denomination.TEN_EURO, 1);
-        atm.loadBills(Denomination.TWENTY_EURO, 1);
-        atm.loadBills(Denomination.FIFTY_EURO, 1);
+        atm.loadBills(FIVE_EURO, 1);
+        atm.loadBills(TEN_EURO, 1);
+        atm.loadBills(TWENTY_EURO, 1);
+        atm.loadBills(FIFTY_EURO, 1);
 
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1);
-        assertThat(atm.billsFor(Denomination.TEN_EURO)).isEqualTo(1);
-        assertThat(atm.billsFor(Denomination.TWENTY_EURO)).isEqualTo(1);
-        assertThat(atm.billsFor(Denomination.FIFTY_EURO)).isEqualTo(1);
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(1);
+        assertThat(atm.billsFor(TEN_EURO)).isEqualTo(1);
+        assertThat(atm.billsFor(TWENTY_EURO)).isEqualTo(1);
+        assertThat(atm.billsFor(FIFTY_EURO)).isEqualTo(1);
     }
 
     @Test
     void load_bills_keeping_track_of_the_already_existing_bills() {
-        atm.loadBills(Denomination.FIVE_EURO, 1);
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1);
+        atm.loadBills(FIVE_EURO, 1);
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(1);
 
-        atm.loadBills(Denomination.FIVE_EURO, 2);
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(1 + 2);
+        atm.loadBills(FIVE_EURO, 2);
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(1 + 2);
     }
 
     @Test
     void offer_cash_withdrawal_with_a_bundle_of_just_five_euros() {
-        atm.loadBills(Denomination.FIVE_EURO, 2);
+        atm.loadBills(FIVE_EURO, 2);
 
         Map<Denomination, Integer> bundle = atm.withdraw(10);
 
-        assertThat(bundle.get(Denomination.FIVE_EURO)).isEqualTo(2);
-        assertThat(atm.billsFor(Denomination.FIVE_EURO)).isEqualTo(0);
+        assertThat(bundle.get(FIVE_EURO)).isEqualTo(2);
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
     }
 }
