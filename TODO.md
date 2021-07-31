@@ -1,4 +1,5 @@
 # TODO list
+
 * [F] withdrawal bundles of only 5€ notes 
   - withdrawal should raise an exception when cannot be performed
   - withdrawal should not leave negative note quantities
