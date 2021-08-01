@@ -59,7 +59,9 @@ public class AutomatedTellerMachineTest {
 
     @Test
     void raises_an_error_condition_if_the_notes_are_not_enough_to_complete_the_withdrawal() {
-        assertThatThrownBy(() -> atm.withdraw(5))
+        atm.loadBills(FIVE_EURO, 2);
+
+        assertThatThrownBy(() -> atm.withdraw(15))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("Not enough money, this ATM needs servicing");
     }

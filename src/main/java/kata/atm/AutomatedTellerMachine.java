@@ -16,15 +16,13 @@ public class AutomatedTellerMachine {
     }
 
     public Withdrawal withdraw(int amount) {
-        if (billsFor(FIVE_EURO) <= 0)
-            throw new IllegalStateException("Not enough money, this ATM needs servicing");
-
         Withdrawal withdrawal = new Withdrawal();
-        if (billsFor(FIVE_EURO) > 0) {
-            int notesQuantity = amount / FIVE_EURO.value;
-            loadBills(FIVE_EURO, -notesQuantity);
-            withdrawal.add(FIVE_EURO, notesQuantity);
+        while (billsFor(FIVE_EURO) > 0 && withdrawal.value() < amount) {
+            loadBills(FIVE_EURO, -1);
+            withdrawal.add(FIVE_EURO, 1);
         }
+        if (withdrawal.value() < amount)
+            throw new IllegalStateException("Not enough money, this ATM needs servicing");
         return withdrawal;
     }
 }
