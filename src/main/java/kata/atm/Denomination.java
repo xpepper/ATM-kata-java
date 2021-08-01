@@ -1,7 +1,10 @@
 package kata.atm;
 
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 public enum Denomination {
     FIVE_EURO(5),
@@ -16,6 +19,12 @@ public enum Denomination {
     }
 
     public static List<Denomination> all() {
-        return Arrays.asList(FIFTY_EURO, TWENTY_EURO, TEN_EURO, FIVE_EURO);
+        return stream(Denomination.values())
+                .sorted(byHighestValueFirst())
+                .collect(toList());
+    }
+
+    private static Comparator<Denomination> byHighestValueFirst() {
+        return (denomination, otherDenomination) -> otherDenomination.value - denomination.value;
     }
 }
