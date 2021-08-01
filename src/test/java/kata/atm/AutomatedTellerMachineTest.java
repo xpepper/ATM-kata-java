@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static kata.atm.Denomination.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class AutomatedTellerMachineTest {
@@ -54,5 +55,12 @@ public class AutomatedTellerMachineTest {
         assertThat(withdrawal.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
         assertThat(withdrawal.value()).isEqualTo(10);
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
+    }
+
+    @Test
+    void raises_an_error_condition_if_the_notes_are_not_enough_to_complete_the_withdrawal() {
+        assertThatThrownBy(() -> atm.withdraw(5))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Not enough money, this ATM needs servicing");
     }
 }
