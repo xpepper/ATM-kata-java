@@ -1,9 +1,9 @@
 # TODO list
 
 * [F] withdrawal bundles of only 5€ notes 
-  - withdrawal should raise an exception when cannot be performed
   - withdrawal should not leave negative note quantities
 * [F] withdrawal bundles of other denominations too (10, 20, 50)
+  - withdrawal should raise an exception when cannot be performed
 * [F] gives priority to the higher value denominations first before using the smaller denominations
 * [F] it should be disallowed to load negative quantities of banknotes
 * [!] `Denomination` is a simple `enum`... is it enough?
