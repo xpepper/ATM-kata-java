@@ -70,12 +70,16 @@ public class AutomatedTellerMachineTest {
     void gives_priority_to_the_higher_value_denominations_first_before_using_the_smaller_denominations() {
         atm.loadBills(FIVE_EURO, 2);
         atm.loadBills(TEN_EURO, 2);
+        atm.loadBills(TWENTY_EURO, 2);
+        atm.loadBills(FIFTY_EURO, 2);
 
-        Bundle withdraw = atm.withdraw(10);
+        Bundle withdraw = atm.withdraw(85);
 
-        assertThat(withdraw.banknotesAmountFor(FIVE_EURO)).isEqualTo(0);
+        assertThat(withdraw.value()).isEqualTo(85);
+        assertThat(withdraw.banknotesAmountFor(FIFTY_EURO)).isEqualTo(1);
+        assertThat(withdraw.banknotesAmountFor(TWENTY_EURO)).isEqualTo(1);
         assertThat(withdraw.banknotesAmountFor(TEN_EURO)).isEqualTo(1);
-        assertThat(withdraw.value()).isEqualTo(10);
+        assertThat(withdraw.banknotesAmountFor(FIVE_EURO)).isEqualTo(1);
     }
 
 
