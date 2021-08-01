@@ -37,7 +37,7 @@ public class AutomatedTellerMachineTest {
     }
 
     @Test
-    void load_bills_keeping_track_of_the_already_existing_bills() {
+    void loads_bills_keeping_track_of_the_already_existing_bills() {
         atm.loadBills(FIVE_EURO, 1);
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(1);
 
@@ -46,7 +46,7 @@ public class AutomatedTellerMachineTest {
     }
 
     @Test
-    void offer_cash_withdrawal_with_a_bundle_of_just_five_euros() {
+    void offers_cash_withdrawal_with_a_bundle_of_just_five_euros() {
         atm.loadBills(FIVE_EURO, 2);
 
         Withdrawal withdrawal = atm.withdraw(10);
