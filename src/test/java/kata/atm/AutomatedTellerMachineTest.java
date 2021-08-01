@@ -50,10 +50,10 @@ public class AutomatedTellerMachineTest {
     void offers_cash_withdrawal_with_a_bundle_of_just_five_euros() {
         atm.loadBills(FIVE_EURO, 2);
 
-        Withdrawal withdrawal = atm.withdraw(10);
+        Bundle withdraw = atm.withdraw(10);
 
-        assertThat(withdrawal.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
-        assertThat(withdrawal.value()).isEqualTo(10);
+        assertThat(withdraw.banknotesAmountFor(FIVE_EURO)).isEqualTo(2);
+        assertThat(withdraw.value()).isEqualTo(10);
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(0);
     }
 
@@ -65,4 +65,5 @@ public class AutomatedTellerMachineTest {
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("Not enough money, this ATM needs servicing");
     }
+
 }
