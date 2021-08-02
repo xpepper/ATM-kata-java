@@ -13,7 +13,7 @@ public class AutomatedTellerMachineTest {
 
     @BeforeEach
     void setUp() {
-        atm = new AutomatedTellerMachine();
+        atm = new AutomatedTellerMachine(new EuroDenominations());
     }
 
     @Test
