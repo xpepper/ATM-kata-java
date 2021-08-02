@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static kata.atm.EuroDenominations.*;
+import static kata.atm.UsDenominations.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -92,4 +93,24 @@ public class AutomatedTellerMachineTest {
         assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(3);
     }
 
+    @Test
+    void offers_cash_withdrawal_with_us_denominations() {
+        AutomatedTellerMachine atm = new AutomatedTellerMachine(new UsDenominations());
+
+        atm.loadBills(FIVE_DOLLARS, 2);
+        atm.loadBills(TEN_DOLLARS, 2);
+        atm.loadBills(TWENTY_DOLLARS, 4);
+        atm.loadBills(FIFTY_DOLLARS, 2);
+        atm.loadBills(HUNDRED_DOLLARS, 2);
+
+        Bundle withdraw = atm.withdraw(395);
+
+        assertThat(withdraw.value()).isEqualTo(395);
+        assertThat(withdraw.banknotesAmountFor(HUNDRED_DOLLARS)).isEqualTo(2);
+        assertThat(withdraw.banknotesAmountFor(FIFTY_DOLLARS)).isEqualTo(2);
+        assertThat(withdraw.banknotesAmountFor(TWENTY_DOLLARS)).isEqualTo(4);
+        assertThat(withdraw.banknotesAmountFor(TEN_DOLLARS)).isEqualTo(1);
+        assertThat(withdraw.banknotesAmountFor(FIVE_DOLLARS)).isEqualTo(1);
+
+    }
 }
