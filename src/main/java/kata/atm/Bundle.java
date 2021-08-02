@@ -17,8 +17,12 @@ public class Bundle {
         add(denomination, -quantity);
     }
 
+    public boolean lessThen(int amount) {
+        return value() < amount;
+    }
+
     @SuppressWarnings("Convert2MethodRef")
-    public int value() {
+    int value() {
         return bundle.keySet().stream()
                 .mapToInt(denomination -> valueFor(denomination))
                 .sum();

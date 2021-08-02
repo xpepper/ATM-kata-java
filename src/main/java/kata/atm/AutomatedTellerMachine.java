@@ -17,13 +17,13 @@ public class AutomatedTellerMachine {
         Bundle withdrawal = new Bundle();
         int reminder = amount;
         for (Denomination denomination : Denomination.all()) {
-            while (billsFor(denomination) > 0 && withdrawal.value() < amount && reminder >= denomination.value) {
+            while (billsFor(denomination) > 0 && withdrawal.lessThen(amount) && reminder >= denomination.value) {
                 reminder -= denomination.value;
                 withdrawal.add(denomination, 1);
                 bundle.remove(denomination, 1);
             }
         }
-        if (withdrawal.value() < amount) {
+        if (withdrawal.lessThen(amount)) {
             stream(Denomination.values()).forEach((d) -> bundle.add(d, withdrawal.banknotesAmountFor(d)));
             throw new IllegalStateException("Not enough money, this ATM needs servicing");
         }
