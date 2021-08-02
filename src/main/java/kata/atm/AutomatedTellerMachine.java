@@ -18,7 +18,7 @@ public class AutomatedTellerMachine {
             while (billsFor(denomination) > 0 && withdrawal.value() < amount && reminder >= denomination.value) {
                 reminder -= denomination.value;
                 withdrawal.add(denomination, 1);
-                bundle.add(denomination, -1);
+                bundle.remove(denomination, 1);
             }
         }
         if (withdrawal.value() < amount)

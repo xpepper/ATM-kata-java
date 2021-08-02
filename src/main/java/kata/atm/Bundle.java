@@ -13,6 +13,10 @@ public class Bundle {
         bundle.put(denomination, banknotesAmountFor(denomination) + quantity);
     }
 
+    public void remove(Denomination denomination, int quantity) {
+        add(denomination, -quantity);
+    }
+
     @SuppressWarnings("Convert2MethodRef")
     public int value() {
         return bundle.keySet().stream()
