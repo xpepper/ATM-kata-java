@@ -2,8 +2,7 @@ package kata.atm;
 
 import org.junit.jupiter.api.Test;
 
-import static kata.atm.Denomination.*;
-import static kata.atm.Denomination.TWENTY_EURO;
+import static kata.atm.EuroDenominations.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class BundleTest {
