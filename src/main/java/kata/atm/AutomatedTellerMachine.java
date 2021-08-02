@@ -20,7 +20,7 @@ public class AutomatedTellerMachine {
     public Bundle withdraw(int amount) {
         Bundle withdrawal = new Bundle(denominations);
         int reminder = amount;
-        for (Denomination denomination : denominations.all()) {
+        for (Denomination denomination : denominations) {
             while (hasBillsFor(denomination) && withdrawal.lessThen(amount) && reminder >= denomination.value) {
                 reminder -= denomination.value;
                 withdrawal.add(denomination, 1);

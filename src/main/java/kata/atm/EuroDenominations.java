@@ -1,6 +1,9 @@
 package kata.atm;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 import static java.util.Arrays.asList;
 

@@ -23,7 +23,7 @@ public class Bundle {
     }
 
     public void restoreFrom(Bundle bundle) {
-        for (Denomination denomination : denominations.all()) {
+        for (Denomination denomination : denominations) {
             add(denomination, bundle.banknotesAmountFor(denomination));
         }
     }
