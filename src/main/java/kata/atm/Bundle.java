@@ -12,13 +12,13 @@ public class Bundle {
     public void add(Denomination denomination, int quantity) {
         bundle.put(denomination, banknotesAmountFor(denomination) + quantity);
     }
-    
+
     public void remove(Denomination denomination, int quantity) {
         add(denomination, -quantity);
     }
 
     public void restoreFrom(Bundle bundle) {
-        for (Denomination denomination : Denomination.values()) {
+        for (Denomination denomination : Denomination.all()) {
             add(denomination, bundle.banknotesAmountFor(denomination));
         }
     }
