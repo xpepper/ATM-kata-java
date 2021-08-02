@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class Bundle {
     private final HashMap<Denomination, Integer> bundle = new HashMap<>();
+    private final Denominations denominations;
+
+    public Bundle(Denominations denominations) {
+        this.denominations = denominations;
+    }
 
     public Integer banknotesAmountFor(Denomination denomination) {
         return bundle.getOrDefault(denomination, 0);
@@ -18,7 +23,7 @@ public class Bundle {
     }
 
     public void restoreFrom(Bundle bundle) {
-        for (Denomination denomination : Denomination.all()) {
+        for (Denomination denomination : denominations.all()) {
             add(denomination, bundle.banknotesAmountFor(denomination));
         }
     }

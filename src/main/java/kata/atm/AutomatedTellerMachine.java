@@ -1,11 +1,12 @@
 package kata.atm;
 
 public class AutomatedTellerMachine {
-    private final Bundle bundle = new Bundle();
+    private final Bundle bundle;
     private final Denominations denominations;
 
     public AutomatedTellerMachine(Denominations denominations) {
         this.denominations = denominations;
+        bundle = new Bundle(denominations);
     }
 
     public void loadBills(Denomination denomination, int quantity) {
@@ -17,7 +18,7 @@ public class AutomatedTellerMachine {
     }
 
     public Bundle withdraw(int amount) {
-        Bundle withdrawal = new Bundle();
+        Bundle withdrawal = new Bundle(denominations);
         int reminder = amount;
         for (Denomination denomination : denominations.all()) {
             while (hasBillsFor(denomination) && withdrawal.lessThen(amount) && reminder >= denomination.value) {

@@ -10,7 +10,7 @@ class BundleTest {
 
     @Test
     void has_a_value_based_on_its_banknotes_bundle() {
-        Bundle bundle = new Bundle();
+        Bundle bundle = new Bundle(new EuroDenominations());
         bundle.add(FIVE_EURO, 1);
         bundle.add(TEN_EURO, 1);
 
@@ -19,7 +19,7 @@ class BundleTest {
 
     @Test
     void adding_twice_on_the_same_denomination_increases_the_withdrawal_value() {
-        Bundle bundle = new Bundle();
+        Bundle bundle = new Bundle(new EuroDenominations());
         bundle.add(TWENTY_EURO, 1);
         bundle.add(TWENTY_EURO, 1);
 
