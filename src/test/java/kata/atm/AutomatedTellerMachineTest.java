@@ -82,5 +82,14 @@ public class AutomatedTellerMachineTest {
         assertThat(withdraw.banknotesAmountFor(FIVE_EURO)).isEqualTo(1);
     }
 
+    @Test
+    void is_left_as_it_was_before_when_withdrawal_fails_for_an_odd_amount() {
+        atm.loadBills(FIVE_EURO, 3);
+
+        assertThatThrownBy(() -> atm.withdraw(11))
+                .isInstanceOf(IllegalStateException.class);
+
+        assertThat(atm.billsFor(FIVE_EURO)).isEqualTo(3);
+    }
 
 }
