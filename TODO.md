@@ -1,5 +1,6 @@
 # TODO list
 
+* [?] extract the "put back" logic when withdrawal fails?
 * [?] should we move the withdrawal logic to the `Bundle` class or leave it in the `ATM` class?
 * [F] it should be disallowed to load negative quantities of banknotes
 * [!] `Denomination` is a simple `enum`... is it enough?
