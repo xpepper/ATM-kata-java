@@ -1,7 +1,5 @@
 package kata.atm;
 
-import static java.util.Arrays.stream;
-
 public class AutomatedTellerMachine {
     private final Bundle bundle = new Bundle();
 
@@ -24,7 +22,7 @@ public class AutomatedTellerMachine {
             }
         }
         if (withdrawal.lessThen(amount)) {
-            stream(Denomination.values()).forEach((d) -> bundle.add(d, withdrawal.banknotesAmountFor(d)));
+            bundle.restoreFrom(withdrawal);
             throw new IllegalStateException("Not enough money, this ATM needs servicing");
         }
 
